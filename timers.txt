@@ -1,0 +1,66 @@
+timers
+-------------------
+var r=require('prompt-sync')();
+console.log('1.Immediate 2.SetInterval 3.SetTimeout 4.NextTick');
+var ch=r('select your choice:');
+if(ch=='1')
+setImmediate(immediatefun);
+else if(ch=='2')
+setInterval(intervalfun,3000,'3 seconds');
+else if(ch=='3'){
+console.time('5 seconds');
+setTimeout(timeoutfun,5000,'5 seconds');
+}
+
+else if(ch=='4')
+process.nextTick(tickfun);
+
+function tickfun(){
+console.log('this is nexttick function....')
+}
+function timeoutfun(timer){
+console.timeEnd(timer)
+console.log('this is set timeout function after 5 seconds....')
+}
+function intervalfun(){
+console.log('this is set interval function for every 3 seconds.....');
+}
+function immediatefun(){
+console.log('this is immediate function...');
+}
+
+
+or
+
+
+timers
+---------
+var r=require('prompt-sync')()
+console.log('1.setimmediate 2.setinterval 3.settimeout 4.nexttick')
+ch=r('enter your choice')
+if(ch==1){
+	setImmediate(fun1);
+}
+else if(ch==2){
+	setInterval(fun2,2000)
+}
+else if(ch==3){
+	console.time('3')
+	setTimeout(fun3,3000,3)
+}
+else if(ch==4){
+	process.nextTick(fun4)
+}
+function fun4(){
+	console.log('next tick')
+}
+function fun3(t){
+	console.timeEnd(t)
+	console.log('3 seconds')
+}
+function fun2(){
+	console.log('2 seconds')
+}
+function fun1(){
+	console.log('immediate function')
+}

@@ -1,0 +1,45 @@
+buffers
+----------------
+var p=require('prompt-sync')();
+var b1=p('enter a string:');
+console.log(b1.toString());
+var a=parseInt(p('enter the size:'));
+var b2=Buffer.alloc(a);
+var c=p('enter the character to fill:');
+b2.fill(c);
+console.log(b2.toString());
+var s=p('enter a string:');
+b2.write(s,1);
+console.log(b2.toString());
+var b3=Buffer.alloc(100);
+b2.copy(b3)
+console.log(b2.toString())
+console.log(b1.slice(2,4))
+var b4=Buffer.from('kingdom');
+b3=Buffer.concat([b4,b2])
+console.log('after concatination:'+b3.toString());
+
+
+or
+
+
+
+buffers
+---------
+var r=require('prompt-sync')()
+var s=parseInt(r('enter the size'))
+var b1=Buffer.alloc(s)
+console.log(b1.toString())
+var c=r('enter character')
+b1.fill(c)
+console.log(b1.toString())
+var w=r('enter string')
+b1.write(w,4)
+console.log(b1.toString())
+var b2=Buffer.alloc(100)
+b1.copy(b2)
+console.log('b1=',b1.toString())
+console.log('b2=',b2.toString())
+console.log(b2.slice(2,5).toString())
+var b3=Buffer.concat([b1,b2])
+console.log(b3.toString())

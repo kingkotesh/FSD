@@ -1,0 +1,96 @@
+streams
+-------
+var stream=require('stream')
+class Myclass extends stream.Readable{
+	constructor(){
+		super();
+		this.wwe=['roman','dean','seth','randy','rok'];
+		this.one=0;
+	}
+	_read(){
+		if(this.one<this.wwe.length){
+			this.push(this.wwe[this.one]);
+			this.one++;
+		}
+		else
+			this.push(null);
+	}
+}
+var m=new Myclass();
+
+class Urclass extends stream.Writable{
+	constructor(){
+		super();
+		this.superstars=[];
+	}
+	_write(data,encoding,fun){
+		console.log(data.toString());
+		fun();
+	}
+}
+var u=new Urclass();
+m.pipe(u);
+
+
+or
+
+
+
+streams(Readable)
+-----------------
+var p=require('prompt-sync')();
+var k=p('enter the size:')
+console.log(k)
+var a=[]
+for(var i=0;i<k;i++){
+var s=p('enter the data:');
+a.push(s)
+}
+console.log(a)
+
+var stream=require('stream');
+class MyReadableStream extends stream.Readable{
+constructor(){
+super();
+this.source=a;
+this.index=0
+}
+_read(){
+if(this.index<this.source.length){
+this.push(this.source[this.index])
+this.index++
+}
+else{
+this.push(null)
+}
+}
+}
+var rs=new MyReadableStream();
+console.log('read method:'+rs.read())
+rs.on('data',function(chunk){
+console.log('data event handler:'+chunk)
+})
+rs.on('end',function(chunk){
+console.log('data completely readed')
+})
+
+writable stream
+------------------------
+var r=require('stream');
+class UrClass extends r.Writable{
+constructor(){
+super();
+this.result=[];
+}
+_write(data,encoding,fun){
+this.result.push(data.toString('utf8'));
+console.log("inserted data:"+data);
+fun();
+}
+}
+var ws=new UrClass();
+for(var i=10;i<=15;i++){
+ws.write("item - "+i,'utf8');
+}
+console.log(ws.result);
+

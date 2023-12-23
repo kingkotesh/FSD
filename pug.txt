@@ -1,0 +1,38 @@
+pug
+-----------
+var express=require('express')
+var app=express()
+app.set('view engine','pug')
+app.get('/',function(req,res){
+res.render('index');
+});
+var server=app.listen(5000,function(){
+console.log("node server is running");
+});
+
+
+
+
+or
+
+
+
+index.pug(place in views folder)
+----------
+doctype html
+html
+	head
+	body
+		h1 hello world!
+pug.js
+--------
+var express=require('express')
+var app=express()
+app.set('view engine','pug')
+app.get('/',function(req,res){
+	res.render('index');
+});
+var s=app.listen(2500,function(){
+	console.log('server is running......')
+})
+

@@ -1,0 +1,13 @@
+express
+------------
+var express=require('express');
+var app=express();
+app.listen(3000);
+app.get('/myfolder',function(req,res){
+res.sendFile('reg.html',{maxAge:1,root:'./myfolder'},function(err){
+if(err)
+console.log('error')
+else
+console.log('success')
+});
+});

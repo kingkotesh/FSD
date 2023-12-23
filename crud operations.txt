@@ -1,0 +1,54 @@
+crud operations
+---------------------
+var r=require("prompt-sync")();
+var fs=require("fs");
+while(true)
+{
+console.log("1.create 2.read 3.update 4.delete 5.exit");
+var ch=r('select ur choice:');
+switch(ch)
+{
+case "1": fs.writeFileSync('crudfile.txt','this is my first file');
+console.log("your file is created successfully..");
+break;
+case "2": data=fs.readFileSync('crudfile.txt');
+console.log("reading a file:the file data is\n");
+console.log(data.toString());
+break;
+case "3": fs.writeFileSync('crudfile.txt','first file is updated');
+data=fs.readFileSync('crudfile.txt');
+console.log("your file is updated successfully\n");
+console.log(data.toString());
+break;
+case "4": fs.unlinkSync('crudfile.txt');
+console.log("the file deleted successfully....");
+break;
+case "5": console.log("successfully exit");
+return 0;
+break;
+default: console.log("invalid choice");
+break;
+}
+}
+
+ 
+
+or
+
+
+
+crud
+-----
+var fs=require('fs')
+fs.writeFileSync('demo.txt','i am the king of my kingdom')
+console.log('create operation success')
+var data=fs.readFileSync('demo.txt')
+console.log('read operation success')
+console.log(data.toString())
+fs.writeFileSync('demo.txt','i am the king of my kingdom will u be my queen');
+console.log('update operation success')
+var data=fs.readFileSync('demo.txt')
+console.log(data.toString())
+fs.unlinkSync('demo.txt')
+console.log('deleted success')
+

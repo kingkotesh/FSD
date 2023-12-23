@@ -1,0 +1,66 @@
+events
+----------------
+var events=require('events');
+var p=require('prompt-sync')();
+function Account(){
+this.balance=0;
+events.EventEmitter.call(this);
+this.deposit=function(amt){
+this.balance+=amt;
+this.emit('check');
+}
+this.withdraw=function(amt){
+this.balance-=amt;
+this.emit('check');
+}
+}
+Account.prototype.__proto__=events.EventEmitter.prototype;
+var a=new Account();
+function showBalance(){
+if(a.balance<0){
+console.log('insufficient balance')
+}
+else{
+console.log(a.balance);
+}
+}
+a.on('check',showBalance);
+var k=parseInt(p('enter the amount to withdraw:'))
+a.deposit(k);
+var k=parseInt(p('enter the amount to deposit:'))
+a.withdraw(k)
+
+or
+
+
+
+events
+-------
+var events=require('events')
+var r=require('prompt-sync')()
+function Account(){
+	events.EventEmitter.call(this);
+	this.balance=0;
+	this.deposit=function(amt){
+		this.balance+=amt
+		this.emit('check')
+	}
+	this.withdraw=function(amt){
+		this.balance-=amt
+		this.emit('check')
+	}
+}
+Account.prototype.__proto__=events.EventEmitter.prototype
+var a=new Account()
+function show(){
+	if(a.balance<0)
+		console.log('insufficient balance')
+	else
+		console.log(a.balance)
+}
+a.on('check',show)
+var d=parseInt(r('enter deposit amount:'))
+a.deposit(d)
+var w=parseInt(r('enter withdraw amount:'))
+a.withdraw(w)
+
